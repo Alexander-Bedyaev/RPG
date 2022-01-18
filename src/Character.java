@@ -1,16 +1,25 @@
-public class Character {
+public abstract class Character implements Attackable {
 
-    String name = null;
-    int health = 100;
-    double gold = 0;
-    int agility = 0;
-    int strength = 0;
-    int experiance = 0;
+    String name;
+    int health;
+    double gold;
+    int agility;
+    int strength;
+    int experience;
+
+    public Character() {
+        this.name = null;
+        this.health = 100;
+        this.gold = 50;
+        this.agility = 0;
+        this.experience = 0;
+        this.strength = 0;
 
 
+    }
 
 
-    void attack () {
+    void attack() {
 
     }
 
