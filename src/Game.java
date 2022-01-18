@@ -25,7 +25,7 @@ public class Game {
             case 1:
                 System.out.println("Вы отправились в тёмный лес");
                 Battle battle = new Battle();
-                battle.run();
+                battle.start();
                 break;
             case 2:
                 System.out.println("Вы пришли к торговцу, но у него переучет");

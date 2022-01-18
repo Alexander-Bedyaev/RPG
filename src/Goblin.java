@@ -3,7 +3,7 @@ public class Goblin extends Character {
         this.name = "Гоблин";
         this.gold = 50;
         this.agility = 15;
-        this.strength = 50;
+        this.strength = 25;
 
     }
 }
