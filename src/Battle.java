@@ -1,9 +1,8 @@
 public class Battle extends Thread {
     byte foeChoice = (byte) Math.round(Math.random());
     Character foe = getFoe();
-    byte damage;
 
-    public Character getFoe() {
+    private Character getFoe() {
         if (foeChoice == 0) {
             foe = new Skeleton();
             System.out.println("Вы сталкнулись со скелетом");
@@ -14,27 +13,12 @@ public class Battle extends Thread {
         return foe;
     }
 
-    private void getDamage(Character hitter) {
-        byte fightLuck = (byte) (Math.random() * 100);
-        if (hitter.experience > fightLuck) {
-            damage = (byte) (hitter.strength * 2);
-            System.out.println(hitter.name + " нанес КРИТИЧЕСКИЙ удар с уроном " + damage);
-        } else if ((hitter.agility * 3) > fightLuck) {
-            damage = hitter.strength;
-            System.out.println(hitter.name + " нанес удар с уроном " + damage);
-        } else {
-            damage = 0;
-            System.out.println(hitter.name + " промахнулся");
-        }
-
-    }
-
     @Override
     public void run() {
 
         while (true) {
-            getDamage(Game.player);
-            foe.health = (byte) (foe.health - damage);
+            Game.player.attack();
+            foe.health = (byte) (foe.health - Game.player.damage);
             System.out.println("Уровень здоровья " + foe.name + "а: " + foe.health);
             if (foe.health <= 0) {
                 break;
@@ -44,8 +28,8 @@ public class Battle extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            getDamage(foe);
-            Game.player.health = (byte) (Game.player.health - damage);
+            foe.attack();
+            Game.player.health = (byte) (Game.player.health - foe.damage);
             System.out.println("Уровень здоровья " + Game.player.name + "а: " + Game.player.health);
             if (Game.player.health <= 0) {
                 break;
@@ -55,7 +39,6 @@ public class Battle extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
         }
         if (foe.health <= 0) {
             Game.player.experience = (byte) (Game.player.experience + 5);

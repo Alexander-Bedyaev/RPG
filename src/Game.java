@@ -13,13 +13,12 @@ public class Game {
     static void playerCreator() {
         System.out.println("Введите имя своего персонажа");
         player = new Player();
-
     }
 
     static void actionOption() {
         System.out.println("Куда вы хотите пойти?"); // варианты: 1-3 , 4 - лечиться
         Scanner scanner = new Scanner(System.in);
-        int action = scanner.nextInt();
+        int action = scanner.nextByte();
 
         switch (action) {
             case 1:
@@ -28,8 +27,9 @@ public class Game {
                 battle.start();
                 break;
             case 2:
-                System.out.println("Вы пришли к торговцу, но у него переучет");
-                //Trading.start();
+                System.out.println("Вы пришли к торговцу");
+                Trading trading = new Trading();
+                trading.purchase();
                 break;
             case 3:
                 System.out.println("Вы ушли на покой");
