@@ -5,7 +5,7 @@ public abstract class Character {
     int gold;
     byte agility;
     byte strength;
-    byte experience;
+    int experience;
     byte damage;
     int meds;
 
@@ -21,7 +21,7 @@ public abstract class Character {
 
     public void attack() {
         byte fightLuck = (byte) (Math.random() * 100);
-        if (experience > fightLuck) {
+        if (experience >= fightLuck) {
             damage = (byte) (strength * 2);
             System.out.println(name + " нанес КРИТИЧЕСКИЙ удар с уроном " + damage);
         } else if ((agility * 3) > fightLuck) {
@@ -32,6 +32,4 @@ public abstract class Character {
             System.out.println(name + " промахнулся");
         }
     }
-
-
 }

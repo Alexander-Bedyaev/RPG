@@ -16,7 +16,12 @@ public class Game {
     }
 
     static void actionOption() {
-        System.out.println("Куда вы хотите пойти?"); // варианты: 1-3 , 4 - лечиться
+        System.out.println("Куда вы хотите пойти?");
+        /*варианты:
+        1 - бой в лесу;
+        2 - к торговцу;
+        3 - лечиться;
+        4 - на покой.*/
         Scanner scanner = new Scanner(System.in);
         int action = scanner.nextByte();
 
@@ -32,10 +37,10 @@ public class Game {
                 trading.purchase();
                 break;
             case 3:
-                System.out.println("Вы ушли на покой");
+                player.heal();
                 break;
             case 4:
-                player.heal();
+                System.out.println("Вы ушли на покой");
                 break;
             default:
                 System.out.println("Введённое значение не соответсвует доступным вариантам");

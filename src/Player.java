@@ -14,7 +14,11 @@ public class Player extends Character {
     public void heal() {
         System.out.println("Ваше здоровье - " + health + ", у вас " + meds + " порций лекарства.");
         System.out.println("Сколько лекарства вы хотите принять?");
-        int medsToTake = scanner.nextByte();
+        while (!scanner.hasNextInt()) {
+            scanner.next();
+            System.out.println("Введите натуральное число порций лекарства");
+        }
+        int medsToTake = scanner.nextInt();
         byte healthToRecover = (byte) (100 - health);
         if (health != 100 && medsToTake <= meds && 0 < medsToTake) {
             if (medsToTake * 20 <= healthToRecover) {
@@ -28,12 +32,11 @@ public class Player extends Character {
                 System.out.println("Вы поправили здоровье до " + health);
             }
         } else {
-            System.out.println("Столько лекарства принимать нельзя");
+            System.out.println("Столько лекарств принимать нельзя");
         }
         System.out.println("У вас " + meds + " порций лекарста");
         Game.actionOption();
     }
-
 
 
 }
