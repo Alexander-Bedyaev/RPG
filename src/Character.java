@@ -7,7 +7,7 @@ public abstract class Character {
     byte strength;
     byte experience;
     byte damage;
-    byte meds;
+    int meds;
 
     public Character() {
         this.name = null;

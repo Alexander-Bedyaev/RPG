@@ -34,10 +34,9 @@ public class Game {
             case 3:
                 System.out.println("Вы ушли на покой");
                 break;
-            /*case 4:
-                System.out.println("Осталось зелья ___, уровень здоровья ___");
+            case 4:
                 player.heal();
-                break;*/
+                break;
             default:
                 System.out.println("Введённое значение не соответсвует доступным вариантам");
         }
